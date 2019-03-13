@@ -1,5 +1,5 @@
 
-<div class="gttsd_box_image">
+<div class="gttsd_box_image <?php echo $field['class']; ?>">
 	<label for="<?php echo $field['name']; ?>"><?php echo $field['label']; ?></label>
 
 	<?php if(get_post_meta( get_the_ID(), $field['name'], true ) != ''){ ?>

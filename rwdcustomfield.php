@@ -99,7 +99,7 @@
 				wp_nonce_field( plugin_basename( __FILE__ ), $field['name'] . '_box_content_nonce' );
 
 				if($this->custom_class != NULL){
-					echo '<div class="gttsd gt_homeblock">';
+					echo '<div class="gttsd ' . $this->custom_class . '">';
 				}else{
 					echo '<div class="gttsd">';
 				}
@@ -110,6 +110,12 @@
 						break;
 					case 'image':
 						require(__DIR__ . '../../views/custom_metaboxes/image.php');
+						break;
+					case 'textarea':
+						require(__DIR__ . '../../views/custom_metaboxes/textarea.php');
+						break;
+					case 'boolean':
+						require(__DIR__ . '../../views/custom_metaboxes/boolean.php');
 						break;
 					default:
 						require(__DIR__ . '../../views/custom_metaboxes/standard_input.php');
@@ -185,9 +191,34 @@
 
 	}
 
-	function rwd_field($slug){
+	function rwd_print_meta(){
 		global $post;
-		return get_post_meta($post->ID, $slug)[0];
+		echo '<pre>';
+		print_r(get_post_meta($post->ID));
+		echo '</pre>';
+		die();
+	}
+
+	function rwd_allfeilds($postid = NULL){
+		global $post;
+		return get_post_meta($post->ID);
+	}
+
+	function rwd_field($slug, $postid = NULL){
+
+		global $post;
+
+		if($postid == NULL){
+			$meta = get_post_meta($post->ID, $slug);			
+		}else{
+			$meta = get_post_meta($postid, $slug);
+		}
+
+		if(!isset($meta[0])){
+			return '';
+		}
+		return $meta[0];
+		
 	}
 
 ?>
