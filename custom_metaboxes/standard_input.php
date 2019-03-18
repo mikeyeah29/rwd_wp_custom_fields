@@ -1,4 +1,4 @@
-<div class="gttsd_box_standard">
+<div class="gttsd_box_standard<?php if(isset($field['custom_class'])){ echo $field['custom_class']; } ?>">
 	<label for="<?php echo $field['name']; ?>"><?php echo $field['label']; ?></label>
 	<input type="text" 
 		   id="<?php echo $field['name']; ?>" 

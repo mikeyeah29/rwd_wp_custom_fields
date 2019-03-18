@@ -1,4 +1,4 @@
-<div class="gttsd_box_wysiwyg">
+<div class="gttsd_box_wysiwyg<?php if($field['custom_class']){ echo $field['custom_class']; } ?>">
 	<label for="<?php echo $field['name']; ?>" class="block"><?php echo $field['label']; ?></label>
 	<?php 
 
